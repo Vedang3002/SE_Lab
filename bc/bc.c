@@ -745,9 +745,7 @@ node* count_dig (node*a){
  
 }
 
-
-node* mul(node*a,node*b){
-           
+node* mul(node*a,node*b){       
                list count1,count2,digits;
                initlist(&count1);
                initlist(&count2); 
@@ -820,6 +818,8 @@ node* mul(node*a,node*b){
             insert_decimal(mul,digits);
             return mul;      
 }
+
+
 
 node* divsn (node*a,node*b){
          list count, count1,count2,digits;
@@ -920,25 +920,7 @@ node* divsn (node*a,node*b){
         return q;   
 }
      
-node* power (node*a,node*b){
-          list p;
-          initlist (&p);
-          list count;
-          initlist (&count);
-          insertnode(&count,'1');
-          p=a;
-          list one ;
-          initlist (&one);
-          insertnode(&one,'1');
-          if(b->data=='0'){
-                return one;
-          }
-          while (comparelist(count,b)!=0){
-                p=mul(p,a);
-                count=add(count,one);  
-          }
-          return p;
-}
+
 
 
 
@@ -977,17 +959,14 @@ void eval (queue*p,st*s ){
                             case '*':
                                     c=mul(n1,n2);
                                     push(s,c);
-                                   break;  
+                                    break;
+
                             case '/':
                                     c=divsn(n2,n1);
                                     if (c==NULL){
                                             printf("div by 0 undefined");
                                             return;
                                     } 
-                                    push(s,c);
-                                    break;
-                            case '^':
-                                    c= power(n2,n1);
                                     push(s,c);
                                     break;
                             
